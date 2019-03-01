@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+</head>
+
+<body>
+    <h1 id="name">ドーブル</h1>
+    <p id="cp">CP 10</p>
+    <p id="candy">アメ 10個</p>
+
+    <!--
+        onclick属性で、ボタンをクリックしたときに実行したい
+        JavaScriptを記述します。
+        ここでは、関数（自分で作った命令を実行する）を実行させています。
+    -->
+    <button onclick="powerUp()">強化</button><br/>
+    <button onclick="pokeGet()">捕獲する</button><br/>
+    <button onclick="transfer()">博士に送る</button>
+    <script>
+        // ポケモンに関するデータ
+        // 1つの変数にデータの塊を入れることができます
+        // （変数pokemonにオブジェクトを入れています）
+        // pokemon.level のようにドットで繋ぐと、
+        // 変数のように扱えます。
+        let pokemon = {
+            level: 1,
+            hp: 10,
+            maxHP: 10,
+            cp: 10,
+            candy: 10,
+            count: 1,
+        }; 
+        function powerUp() {
+            // アメがなかったら、何もしない
+            if (pokemon.candy == 0) {
+                return;
+            }
+            
+            // CPを増やす
+            pokemon.cp = pokemon.cp + 15
+            // アメを減らす
+            pokemon.candy--
+            
+            // CPの表示を更新する
+            // HTML上の要素は、JavaScriptの世界では
+            // オブジェクト(データの塊)として扱えます。
+            // 文書データをオブジェクトとして扱うので、
+            // DOM(Document Object Model)と呼びます。
+
+            // id="cp"が付いている要素を取ってくる
+            let p = document.getElementById('cp')
+            // で、その中身を書き換えちゃう
+            p.innerHTML = 'CP ' + pokemon.cp
+
+            updateCandyDisplay()
+        }
+
+        function pokeGet() {
+            // サイコロ振って、取れるかチェックしてみる
+            let v = Math.random()
+            if (v < 0.3) {
+                alert('にげられた！')
+                return
+            }
+            alert('やったー！')
+            
+            // ポケモンとったら、アメ3個増える
+            pokemon.candy = pokemon.candy + 3
+            pokemon.count = pokemon.count + 1
+
+            updateCandyDisplay()
+        }
+
+        function transfer() {
+            // 残りのポケモンがいなければ、当然はかせには送れない
+            if (pokemon.count == 0) {
+                alert('ポケモン、いないよ？');
+                return;
+            }            
+            // ポケモンを送ったら、アメ1個増える。ポケモンは減る
+            pokemon.candy = pokemon.candy + 1
+            pokemon.count--
+
+            updateCandyDisplay()
+        }
+
+        // 呼ばれると、画面の「アメの数」を更新する関数
+        // 命令（関数）を作ると、
+        // - 同じような処理をひとまとめにできる
+        // - プログラムが読みやすくなる        
+        // というメリットがあります。     
+        function updateCandyDisplay() {
+            let p = document.getElementById('candy')
+            p.innerHTML = 'アメ ' + pokemon.candy + '個'
+        }
+    </script>
+</body>
+
+</html>
