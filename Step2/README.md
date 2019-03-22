@@ -73,3 +73,4 @@ let pElem = document.getElementById('counter')
 pElem.innerHTML = 'カウンター' + counter
 ```
 
+ボタンをクリックすると、ほしのすなが増えていくサンプルを[ここ](https://fkmhrk.github.io/Lesson_JavaScript/Step2/stardust.html)に用意しました。ソースは[ここ](https://github.com/fkmhrk/Lesson_JavaScript/blob/master/Step2/stardust.html)にあるので、読んでみましょう。
