@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>ほしのすなを稼げ！</title>
+</head>
+<body>
+  <p id="disp">ほしのすな：0</p>
+  <div>
+    <button onclick="got()">ポケモンをつかまえる</button>
+  </div>
+  
+  <script type="text/javascript">
+  let stardust = 0
+  function got() {
+    stardust += 100
+    let pElem = document.getElementById('disp')
+    pElem.innerHTML = 'ほしのすな：' + stardust
+  }
+  </script>
+</body>
+</html>
