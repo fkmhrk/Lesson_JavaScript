@@ -47,6 +47,8 @@ Webアプリを作るために、今回はユーザーから何かを入力し�
 </select>
 ```
 
+ここまでのサンプルは[ここ](https://fkmhrk.github.io/Lesson_JavaScript/Step2/inputSample.html)にあります。
+
 ## JavaScriptとの連携
 
 HTMLで配置した部品は、 `id` をつけておくと、JavaScriptで「オブジェクト」として扱うことができます。HTML文書をオブジェクトとして扱う仕組みを *DOM(Document Object Model)* と呼びます。
